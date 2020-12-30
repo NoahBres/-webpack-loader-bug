@@ -1,8 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+
+import logo from "./logo.svg";
+import "./App.css";
+
+import { useWorker } from "./worker/useWorker";
 
 function App() {
+  const worker = useWorker();
+
+  useEffect(() => {
+    worker.expensive(1000).then((result) => console.log(result));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
